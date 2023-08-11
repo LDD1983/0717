@@ -10,27 +10,54 @@
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
         .box {
-            height: 30px;
+            height: 38px;
+            padding-top: 6px;
         }
     </style>
 
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col">
-                <button type="button" class="myBtn btn btn-success w-100" id="item1Btn" name=" 奶綠"
-                bg="border border-success" >奶綠 </button>
+            <div class="col font-monospace fs-1 bg-dark text-light py-5 text-center text-uppercase ">
+                m e n u
             </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <!-- row-1 -->
+        <div class="row ">
             <div class="col">
-                <button type="button" class="myBtn btn btn-warning w-100" id="item2Btn" name=" 奶茶"
-                bg="border border-warning" >奶茶</button>
+                <button type="button" class="myBtn btn btn-success w-50 mx-auto" id="item1Btn" name=" 招牌奶綠"
+                    bg="border border-success"  price="50" >招牌奶綠 </button>
             </div>
+            <div class="col text-center ">
+                <div class="box border border-success w-100 mx-auto rounded-2"> 新台幣 50 元整</div>
+            </div>
+
+        </div>
+        <!-- row-2 -->
+        <div class="row mt-3">
             <div class="col">
-                <button type="button" class="myBtn btn btn-danger w-100" id="item3Btn" name=" 紅茶"
-                bg="border border-danger" >紅茶</button>
+                <button type="button" class="myBtn btn btn-warning w-50" id="item2Btn" name=" 招牌奶茶"
+                    bg="border border-warning"  price="60" >招牌奶茶</button>
             </div>
+            <div class="col text-center ">
+                <div class="box border border-warning w-100 mx-auto rounded-2"> 新台幣 60 元整</div>
+            </div>
+
+        </div>
+        <!-- row-3 -->
+        <div class="row my-3">
+            <div class="col">
+                <button type="button" class="myBtn btn btn-danger w-50" id="item3Btn" name=" 招牌紅茶"
+                    bg="border border-danger" price="30" >招牌紅茶</button>
+            </div>
+            <div class="col text-center ">
+                <div class="box border border-danger w-100 mx-auto rounded-2"> 新台幣 30 元整</div>
+            </div>
+            
         </div>
     </div>
 
@@ -38,28 +65,34 @@
     <div class="container mt-5" id="myContainer">
         <div class="row ">
 
-            <div class="col-6 text-center " >
-               品項
+            <div class="col text-center ">
+                品項
             </div>
-            <div class="col-2 text-center ">
-              數量
-           </div>
-           <div class="col-4 text-center ">
-               備註
-           </div>
-           <hr>
-       </div>
-      
+            <div class="col text-center ">
+                數量
+            </div>
+            <div class="col text-center ">
+                價格
+            </div>
+            <div class="col text-center ">
+                備註
+            </div>
+            <div class="col text-center ">
+                操作
+            </div>
+            <hr>
+        </div>
+
     </div>
     <div class="container mt-5">
         <div class="row">
-            
-        <div class="row">
-            <hr>
-            <div class="col">
-                <button type="button" class="btn btn-dark w-100 " id="checkBtn">確定新增</button>
+
+            <div class="row">
+                <hr>
+                <div class="col">
+                    <button type="button" class="btn btn-dark w-100 " id="checkBtn">確定新增</button>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 
@@ -97,48 +130,67 @@
             // console.log('item2value', item2value);
             // console.log('item3value', item3value);
 
-         
 
 
 
 
-            let i = 0;
-            let j = 0;
-            let k = 0;
+
 
             myBtn.click(function () {
-                console.log('click ok');
-                let name  = $(this).attr('name')
-                let bg  = $(this).attr('bg')
+                // console.log('click ok');
+                let name = $(this).attr('name');
+                let bg = $(this).attr('bg');
+                let price = $(this).attr('price');
 
-                
+
                 // let content = `<div class="box w-100 bg-info mt-2 rounded-2 "> 
                 //     第 ${i} 項商品為 item -1 </div>`;
                 // myCol.append(content);
                 let content = ` <div class="row">
-                                     <div class="col-6 text-center">
+                                     <div class="col text-center">
                                         <div class="box w-100 ${bg} mt-2 rounded-2 ">
                                                 ${name}
                                         </div>
                                      </div>
-                                     <div class="col-2 text-center">
-                                        <input type="number" name="" id="item1value" class="form-control mt-1" value="1">
+                                     <div class="col text-center">
+                                        <input type="number" name="" id="item1value" class="form-control mt-1 text-center" value="1">
                                     </div>
-                                    <div class="col-4 text-center">
+                                    <div class="col text-center">
+                                        <input type="text" name="" id="" class="form-control mt-1 text-center" value=" ${price}" readonly>
+                                    </div>
+                                    <div class="col text-center">
                                         <input type="text" name="" id="" class="form-control mt-1" value="" placeholder="備註">
                                     </div>
+                                    <div class="col text-center">
+                                        <button type="button" class="btn btn-outline-dark w-100 btnDel "> 刪除</button>
+                                    </div>
                                 </div>`
-                myContainer.append(content)
 
+                myContainer.append(content)
+                // console.log($('.btnDel'));
+                const btnDel = $('.btnDel');
+                // console.log('btnDel', btnDel);
+                btnDel.click(function () {
+                    // console.log('del ok');
+                    // remove 整條row 
+                    let delRow = $(this).parent().parent();
+                    delRow.remove();
+
+                });
 
 
             })
-          
-         
+
+
+
+
+
 
 
         });
+
     </script>
+
     <!-- jq end -->
 </body>
 
